@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Delivery or Collection Options</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">       
+                <h1>Delivery or Collection Options</h1>
+                <h:form class="forms">
+                    <h:panelGrid columns="2" columnClasses="col1, col2" class="panelgrid">
+                        <h:panelGroup>
+                            <p>Select a delivery date (this is not require for collection)</p>
+                            <p:calendar pattern="yyyy-MM-dd" showOn="button" mindate="today" disabledWeekends="true" value="#{SetDeliveryStatusMB.date}" tabindex="1" autocomplete="false" readonlyInput="true">
+                                <p:ajax event="dateSelect" />
+                            </p:calendar>
+                        </h:panelGroup>
+                        <br/> 
+                        <h:panelGroup>
+                            <p>Select a delivery or booking option</p>
+                            <h:selectOneMenu required="true" value="#{SetDeliveryStatusMB.deliveryStatus}" tabindex="2">
+                                <f:selectItem itemValue="Delivery" itemLabel="Prepare for delivery" />
+                                <f:selectItem itemValue="Collection" itemLabel="Prepare for collection" />
+                            </h:selectOneMenu>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <p>Click here to go back to my account or submit update for the selected parcel</p>
+                    <h:commandButton value="Back" action="recipientViewParcel.xhtml" immediate="true" tabindex="4"/> &nbsp;
+                    <h:commandButton value="Submit" action="#{SetDeliveryStatusMB.setDeliveryStatus(request)}" tabindex="3"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

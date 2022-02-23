@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Register Parcel</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">       
+                <h1>Register Parcel</h1>
+                <h:form class="forms">
+                    <h:panelGrid columns="2" columnClasses="col1, col2" class="panelgrid">
+
+
+                        <p>Enter recipients name</p>
+                        <h:panelGroup>
+                            <h:inputText id="recipientName" 
+                                         required="true"
+                                         requiredMessage="Error: Please enter recipient name"
+                                         value="#{registerParcelMB.recipientName}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="recipientName" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter recipients email</p>
+                        <h:panelGroup>
+                            <h:inputText id="recipientEmail" 
+                                         required="true"
+                                         requiredMessage="Error: Please enter recipient email"
+                                         value="#{registerParcelMB.recipientEmail}"
+                                         validator="#{registerParcelMB.validateEmail}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="recipientEmail" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter parcel description</p>
+                        <h:panelGroup>
+                            <h:inputText id="description"        
+                                         required="true"
+                                         requiredMessage="Error: Please enter parcel description"
+                                         value="#{registerParcelMB.description}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="description" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter parcel dimensions in CM</p>
+                        <h:panelGroup>
+                            <h:inputText id="dimensions"        
+                                         required="true"
+                                         requiredMessage="Error: Please enter parcel dimensions"
+                                         value="#{registerParcelMB.dimensions}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="dimensions" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter delivery address</p>
+                        <h:panelGroup>
+                            <h:inputText id="address"        
+                                         required="true"
+                                         requiredMessage="Error: Please enter delivery address"
+                                         value="#{registerParcelMB.address}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="address" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter delivery postcode</p>
+                        <h:panelGroup>
+                            <h:inputText id="postcode"        
+                                         required="true"
+                                         requiredMessage="Error: Please enter delivery postcode"
+                                         value="#{registerParcelMB.postcode}"
+                                         autocomplete="off"/>&nbsp;
+                            <h:message for="postcode" class="error" />
+                        </h:panelGroup>
+
+                    </h:panelGrid>
+                    <p>Click here to register a parcel, or go back to my account</p>
+                    <h:commandButton value="Back" action="myAccount.xhtml" immediate="true"/>&nbsp;
+                    <h:commandButton value="Register Parcel" action="#{registerParcelMB.registerParcel(request)}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

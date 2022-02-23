@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>My Deliveries</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">       
+                <h1>My Deliveries</h1>
+                <h:form class="forms">
+                    <h:panelGrid columns="2" columnClasses="col1, col2" class="panelgrid">
+                        <h:dataTable value="#{ViewMyDeliveriesMB.getMyDeliveries(request)}"
+                                     var="del"
+                                     styleClass="ParTable" 
+                                     headerClass="ParTableHeader"
+                                     rowClasses="ParTableOddRow,ParTableEvenRow">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet> &nbsp;
+                                <h:outputText value="#{del.parcelID}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Recipient Name</f:facet> &nbsp;
+                                <h:outputText value="#{del.recipientName}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Recipient Email</f:facet> &nbsp;
+                                <h:outputText value="#{del.recipientEmail}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Dimensions</f:facet> &nbsp;
+                                <h:outputText value="#{del.dimensions}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Address</f:facet> &nbsp;
+                                <h:outputText value="#{del.address}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Postcode</f:facet> &nbsp;
+                                <h:outputText value="#{del.postcode}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Delivery Status</f:facet> &nbsp;
+                                <h:outputText value="#{del.deliveryStatus}" /> &nbsp;
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Delivery Date</f:facet> &nbsp;
+                                <h:outputText value="#{del.deliveryDate}" /> &nbsp;
+                            </h:column>
+                            <h:column class="actionButtons">
+                                <f:facet name="header">Actions</f:facet> &nbsp;                         
+                                <h:selectOneMenu required="true" value="#{updateDeliveryStatusMB.deliveryStatus}" tabindex="1">
+                                    <f:selectItem itemValue="Ready for delivery" itemLabel="Ready for delivery" />
+                                    <f:selectItem itemValue="On Route" itemLabel="On Route" />
+                                    <f:selectItem itemValue="Delivered" itemLabel="Delivered" />
+                                </h:selectOneMenu>
+                                <h:commandButton value="Submit" action="#{updateDeliveryStatusMB.updateDeliveryStatus(del.parcelID, request)}" tabindex="2"/> &nbsp;
+                            </h:column>
+                        </h:dataTable> 
+                    </h:panelGrid>
+                    <p>Click here to go back to my account</p>
+                    <h:commandButton value="Back" action="myDriverAccount.xhtml" immediate="true" tabindex="3"/> &nbsp;
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

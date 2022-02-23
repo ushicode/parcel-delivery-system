@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Index</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">   
+                <h:form class="forms">
+                    <h1>Register Sender</h1>
+                    <h:panelGrid columns="2" columnClasses="col1, col2" class="panelgrid">
+                        <p>Enter Business name here</p>
+                        <h:panelGroup>
+                            <h:inputText 
+                                id="Bname"
+                                value="#{registerSenderMB.businessName}"
+                                required="true" 
+                                requiredMessage="Error: Please a business name"
+                                autocomplete="off"
+                                tabindex="1"/> &nbsp;
+                            <h:message for="Bname" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter email here</p>
+                        <h:panelGroup>
+                            <h:inputText 
+                                id="email"
+                                value="#{registerSenderMB.email}"
+                                required="true"
+                                requiredMessage="Error: Please a email"
+                                validator="#{registerSenderMB.validateEmail}"
+                                autocomplete="off"
+                                tabindex="2"/> &nbsp;
+                            <h:message for="email" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter address here</p>
+                        <h:panelGroup>
+                            <h:inputText
+                                id="address"
+                                value="#{registerSenderMB.address}"
+                                required="true"
+                                requiredMessage="Error: Please a address"
+                                autocomplete="off"
+                                tabindex="3"/>&nbsp;
+                            <h:message for="address" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter postcode here</p>
+                        <h:panelGroup>
+                            <h:inputText 
+                                id="postcode"
+                                value="#{registerSenderMB.postcode}"
+                                required="true"
+                                requiredMessage="Error: Please a postcode"
+                                autocomplete="off"
+                                tabindex="4"/>&nbsp;
+                            <h:message for="postcode" class="error" />
+                        </h:panelGroup>
+
+                        <p>Enter password here</p>
+                        <h:panelGroup>
+                            <h:inputSecret 
+                                id="password"
+                                value="#{registerSenderMB.password}"
+                                required="true"
+                                requiredMessage="Error: Please enter a password"
+                                autocomplete="off"
+                                tabindex="5"/>&nbsp;
+                            <h:message for="password" class="error" />
+                        </h:panelGroup>
+
+                        <p>Confirm password here</p>
+                        <h:panelGroup>
+                            <h:inputSecret 
+                                id="confirmpassword"
+                                value="#{registerSenderMB.cpassword}"
+                                required="true"
+                                requiredMessage="Error: Please confirm password"
+                                autocomplete="off"
+                                tabindex="6" />&nbsp;
+                            <h:message for="confirmpassword" class="error" />
+                        </h:panelGroup>
+
+                    </h:panelGrid>
+                    <br></br><p>Click a button to register a sender account, or go back go the login page.</p>        
+                    <h:commandButton value="Back" action="index.xhtml" immediate="true" tabindex="8"/> &nbsp;
+                    <h:commandButton value="Register" action="#{registerSenderMB.registerSender(request)}" tabindex="7"/> 
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
