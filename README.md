@@ -10,7 +10,7 @@
     Some design processes are USDP, Rational Unified Process, OpenUp, and Agile Unified. The USDP approach was used in my design 
 
 
-### USDP APPROACH/ADVANTAGES
+### USDP Approach/Advantages
 > I used the Unified Software Development Process (USDP) for iterative and   incremental workflow due to the following advantages:  <br/>
 
     1.	It makes the development of JSF applications easy to implement <br/>
@@ -18,8 +18,8 @@
     3.	It provides a standard graphical language for expressing and discussing design ideas and requirements, especially in parallel development. <br/>
     4.	It allows professionals to allow us to adjust the quantity and quality of project documentation as required by the project time, volume, budget, and future expansion needs. <br/>
 
-> ### DB, JUnit and Brief Discussion 
+> ### USDP Diagram (containing use cases + more), SQL DB file, JUnit Test and Brief Discussion
 
-    Directory `DB_Evaluation_Test`
+    Directory `USDP_DB_Evaluation_Test`
 
 
